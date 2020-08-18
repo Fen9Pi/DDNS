@@ -11,6 +11,7 @@ import IpGetter
 import platform
 import  subprocess
 import json
+import os
 from AcsClientSingleton import AcsClientSing
 from CommonRequestSingleton import CommonRequestSing
 class Utils:
@@ -69,6 +70,8 @@ class Utils:
 
     #从config.json中获取配置信息JSON串
     def getConfigJson():
-        with open('config.json') as file:
+        module_path = os.path.dirname(__file__)
+        filename = module_path + '/config.json'
+        with open(filename) as file:        
             jsonStr = json.loads(file.read())
         return jsonStr
